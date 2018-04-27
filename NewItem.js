@@ -7,12 +7,12 @@ class NewItem extends Component {
     this.state = {
       text: ''
     }
-    console.log(props)
   }
   render() {
-    console.log(this.state.text)
     return (
-      <View>
+      <View
+        style={{ borderColor: 'red', borderTopWidth: 1, borderBottomWidth: 1 }}
+      >
         <TextInput
           placeholder="add new item..."
           style={{ borderColor: 'grey', borderWidth: 1 }}

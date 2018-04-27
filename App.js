@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, FlatList } from 'react-native'
 import NewItem from './NewItem'
 
 export default class App extends React.Component {
@@ -12,9 +12,7 @@ export default class App extends React.Component {
   }
   addItem(text) {
     let todos = this.state.todos
-    console.log(todos)
     todos.push({ key: text })
-
     this.setState({
       todos: todos
     })
@@ -23,9 +21,13 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>To Do:</Text>
-        <NewItem style={styles.container} addItem={this.addItem} />
+        <NewItem addItem={this.addItem} />
         <View>
-          <Text style={{ marginTop: '10%' }} />
+          <FlatList
+            style={{ marginTop: '10%' }}
+            data={this.state.todos}
+            renderItem={({ item }) => <Text>{item.key}</Text>}
+          />
         </View>
       </View>
     )
