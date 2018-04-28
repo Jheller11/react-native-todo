@@ -10,16 +10,20 @@ class NewItem extends Component {
   }
   render() {
     return (
-      <View
-        style={{ borderColor: 'red', borderTopWidth: 1, borderBottomWidth: 1 }}
-      >
+      <View>
         <TextInput
           placeholder="add new item..."
           style={{ borderColor: 'grey', borderWidth: 1 }}
           onChangeText={text => this.setState({ text })}
+          value={this.state.text}
         />
         <Button
-          onPress={() => this.props.addItem(this.state.text)}
+          onPress={() => {
+            this.props.addItem(this.state.text)
+            this.setState({
+              text: ''
+            })
+          }}
           title="Add New Item"
         />
       </View>
